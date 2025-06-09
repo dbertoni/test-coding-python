@@ -1,6 +1,5 @@
 {
     "name": "Python FastAPI",
-    "dockerFile": "Dockerfile",
     "build": {
 		"context": "..",
         "dockerfile": "Dockerfile"
