@@ -1,32 +1,25 @@
 {
     "name": "Python FastAPI",
     "build": {
-		"context": "..",
-        "dockerfile": "Dockerfile"
+      "context": "..",
+      "dockerfile": "Dockerfile"
     },
-    "features": {
-		"ghcr.io/devcontainers/features/docker-from-docker:1": {
-            "version": "20.10"
-        }
-	},
-    
+    "forwardPorts": [8000],
+    "overrideCommand": false,
     "customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Set *default* container specific settings.json values on container create.
-			"settings": {
-				"[python]": {
-					"editor.formatOnType": true,
-					"editor.formatOnSave": true
-				}
-			},
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"ms-python.python",
-				"GitHub.copilot-nightly",
-                "ms-azuretools.vscode-docker"
-			]
-		}
-	},
-    "forwardPorts": [8000]
-} 
+      "vscode": {
+        "settings": {
+          "[python]": {
+            "editor.formatOnType": true,
+            "editor.formatOnSave": true
+          }
+        },
+        "extensions": [
+          "ms-python.python",
+          "GitHub.copilot-nightly",
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    }
+  }
+  
