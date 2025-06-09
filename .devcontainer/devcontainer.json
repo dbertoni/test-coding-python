@@ -2,7 +2,7 @@
     "name": "Python FastAPI",
     "dockerFile": "Dockerfile",
     "build": {
-		"context": ".",
+		"context": "..",
         "dockerfile": "Dockerfile"
     },
     "features": {
@@ -29,5 +29,5 @@
 			]
 		}
 	},
-    "forwardPorts": [8000],
+    "forwardPorts": [8000]
 } 
