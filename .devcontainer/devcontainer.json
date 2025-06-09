@@ -1,16 +1,34 @@
 {
     "name": "Python FastAPI",
     "dockerFile": "Dockerfile",
-    "forwardPorts": [8000],
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash",
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "python.linting.enabled": true,
-        "python.linting.pylintEnabled": true
+    "build": {
+		"context": ".",
+        "dockerfile": "Dockerfile"
     },
-    "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-    ],
+    "features": {
+		"ghcr.io/devcontainers/features/docker-from-docker:1": {
+            "version": "20.10"
+        }
+	},
+    
+    "customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"[python]": {
+					"editor.formatOnType": true,
+					"editor.formatOnSave": true
+				}
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"GitHub.copilot-nightly",
+                "ms-azuretools.vscode-docker"
+			]
+		}
+	},
+    "forwardPorts": [8000],
     "postCreateCommand": "pip install -r requirements.txt"
 } 
