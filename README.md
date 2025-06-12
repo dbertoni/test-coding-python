@@ -1,13 +1,25 @@
-# FastAPI Test Project
+# FastAPI Technical Test
 
-This is a simple FastAPI project with SQLite integration, designed to run in GitHub Codespaces.
+## Exercise Description
 
-## Features
+This technical test is designed to evaluate your understanding of basic infrastructure concepts, containerisation, and programming practices. The project contains several intentionally introduced bugs and suboptimal configurations that you need to identify and fix.
 
-- FastAPI REST API
-- SQLite database with SQLAlchemy ORM
-- GitHub Codespaces configuration
-- Basic CRUD operations for items
+### Tasks
+
+1. Identify and fix the Docker configuration issues:
+   - Analyse the Dockerfile for inefficient practices
+   - Correct the container networking configuration
+   - Ensure the application runs properly in a containerised environment
+
+2. Debug the FastAPI application:
+   - Locate and fix three code-level bugs
+   - Implement proper error handling
+   - Ensure database operations work correctly
+
+3. Document your solutions:
+   - Explain each issue you found
+   - Provide the corrected code
+   - Justify your changes
 
 ## Getting Started
 
@@ -31,13 +43,16 @@ uvicorn main:app --reload
 
 The API will be available at http://localhost:8000
 
-### GitHub Codespaces
+### Docker Development
 
-1. Open this repository in GitHub Codespaces
-2. The development container will automatically set up the environment
-3. Run the application:
+1. Build the Docker image:
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+docker build -t fastapi-test .
+```
+
+2. Run the container:
+```bash
+docker run -p 8000:8000 fastapi-test
 ```
 
 ## API Documentation
@@ -52,3 +67,12 @@ Once the application is running, you can access:
 - `POST /items/`: Create a new item
 - `GET /items/`: List all items
 - `GET /items/{item_id}`: Get a specific item
+
+## Evaluation Criteria
+
+Your solution will be evaluated based on:
+- Correct identification of all issues
+- Quality of the fixes implemented
+- Understanding of containerisation concepts
+- Code quality and best practices
+- Documentation clarity

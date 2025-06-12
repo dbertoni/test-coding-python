@@ -3,18 +3,18 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /workspace
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    procps \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Install system dependencies - Bad practice: multiple RUN commands
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y curl
+RUN apt-get install -y procps
+RUN apt-get install -y build-essential
+RUN rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+# Install Python dependencies - Bad practice: multiple pip install commands
 COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Set environment variables
 ENV PYTHONPATH=/workspace
@@ -23,10 +23,10 @@ ENV PYTHONUNBUFFERED=1
 # Copy the application code
 COPY . .
 
-# Expose port for FastAPI
-EXPOSE 8000
+# Bug: Wrong port configuration
+EXPOSE 8080
 
-# Default command (suitable for development)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--log-level", "debug"]
+# Bug: Using wrong host configuration
+CMD ["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8080", "--reload", "--log-level", "debug"]
 
 
